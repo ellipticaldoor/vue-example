@@ -9,6 +9,13 @@
 		<button v-on:click="minedTimes += 1">Mine bitcoins ⛏</button>
 		<div>My bitcoins: {{ bitcoins }}</div>
 		<div>{{ '💰'.repeat(bitcoins) }}</div>
+
+		<h1>Things I like:</h1>
+		<div class="thingsILike" v-for="thing of thingsIlike">{{ thing }}</div>
+
+		<h1>What do you think about zebras? 🦓</h1>
+		<input type="text" v-model="aThoughtAboutZebras">
+		<div><b>Your thought on zebras is:</b> {{ aThoughtAboutZebras }}</div>
 	</div>
 </template>
 
@@ -21,6 +28,8 @@ export default {
 			msg: 'Welcome to Yours Vue.js App!',
 			foodCounter: 0,
 			minedTimes: 0,
+			thingsIlike: ['🎸', '🏝', '🤖'],
+			aThoughtAboutZebras: '',
 		};
 	},
 

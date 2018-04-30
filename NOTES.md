@@ -1,32 +1,24 @@
-# Computed
+# v-for and v-model
 
 ```shell
 [edit] src/App.vue
-// First add code using methods
+// v-for
 
-<button v-on:click="minedTimes += 1">Mine bitcoins ⛏</button>
-<div>My bitcoins: {{ bitcoins() }}</div>
-<div>{{ '💰'.repeat(bitcoins()) }}</div>
+<h1>Things I like:</h1>
+<div class="thingsILike" v-for="thing of thingsIlike">{{ thing }}</div>
+
+.thingsILike {
+    font-size: 300%;
+}
 
 // data
-minedTimes: 0,
+thingsIlike: ['🎸', '🏝', '🤖'],
 
-// methods
-bitcoins() {
-    console.log('You asked how bitcoin you have');
-    return this.minedTimes * 2;
-},
+// v-model
+<h1>What do you think about zebras? 🦓</h1>
+<input type="text" v-model="aThoughtAboutZebras">
+<div><b>Your thought on zebras is:</b> {{ aThoughtAboutZebras }}</div>
 
-// Computed example
-[edit] src/App.vue
-
-<button v-on:click="minedTimes += 1">Mine bitcoins ⛏</button>
-<div>My bitcoins: {{ bitcoins }}</div>
-<div>{{ '💰'.repeat(bitcoins) }}</div>
-
-// computed
-bitcoins() {
-    console.log('You asked how bitcoin you have');
-    return this.minedTimes * 2;
-},
+// data
+aThoughtAboutZebras: '',
 ```
