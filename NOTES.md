@@ -50,14 +50,14 @@ new Vue({
 touch src/App.vue
 [edit] src/App.vue
 <template>
-    <div id="hello">
+    <div id="app">
         <h1>{{ msg }}</h1>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'hello',
+    name: 'app',
 
     data() {
         return {
