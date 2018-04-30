@@ -104,4 +104,10 @@ button {
     font-size: $percentage;
 }
 </style>
+
+<style lang="scss" scoped>
+@import './App.scss';
+</style>
+
+import './App.scss';
 ```

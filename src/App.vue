@@ -6,6 +6,8 @@
 </template>
 
 <script>
+// import './App.scss';
+
 export default {
 	name: 'app',
 
@@ -18,8 +20,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$percentage: 150%;
-button {
-	font-size: $percentage;
-}
+@import './App.scss';
 </style>
