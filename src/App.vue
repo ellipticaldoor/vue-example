@@ -1,12 +1,13 @@
 <template>
-	<div id="hello">
+	<div id="app">
 		<h1>{{ msg }}</h1>
+		<button>Click me 🍕</button>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'hello',
+	name: 'app',
 
 	data() {
 		return {
@@ -15,3 +16,10 @@ export default {
 	},
 };
 </script>
+
+<style lang="scss" scoped>
+$percentage: 150%;
+button {
+	font-size: $percentage;
+}
+</style>
