@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<div id="about">
 		<h1>Things I like:</h1>
 		<div class="thingsILike" v-for="thing of thingsIlike">{{ thing }}</div>
 
@@ -11,13 +11,26 @@
 
 <script>
 export default {
-	name: 'app',
+	name: 'about',
+
+	props: {
+		thingsIlike: {
+			type: Array,
+			required: true,
+		},
+	},
 
 	data() {
 		return {
-			thingsIlike: ['🎸', '🏝', '🤖'],
 			aThoughtAboutZebras: '',
 		};
 	},
 };
 </script>
+
+<style scoped>
+#about {
+	border: 2px solid blue;
+	margin: 1rem;
+}
+</style>

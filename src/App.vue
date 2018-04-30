@@ -7,7 +7,8 @@
 		<div>{{ '🥑'.repeat(this.foodCounter) }}</div>
 
 		<Bitcoin />
-		<About />
+		<About v-bind:thingsIlike="['🎸', '🏝', '🤖']" />
+		<About :thingsIlike="['🌞', '🍔']" />
 	</div>
 </template>
 
@@ -24,8 +25,6 @@ export default {
 		return {
 			msg: 'Welcome to Yours Vue.js App!',
 			foodCounter: 0,
-			thingsIlike: ['🎸', '🏝', '🤖'],
-			aThoughtAboutZebras: '',
 		};
 	},
 

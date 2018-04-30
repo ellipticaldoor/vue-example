@@ -24,3 +24,10 @@ export default {
 	},
 };
 </script>
+
+<style scoped>
+#bitcoin {
+	border: 2px solid green;
+	margin: 1rem;
+}
+</style>

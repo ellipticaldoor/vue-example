@@ -32,6 +32,12 @@ export default {
 };
 </script>
 
+<style scoped>
+#bitcoin {
+    border: 2px solid green;
+    margin: 1rem;
+}
+</style>
 
 [edit] src/App.vue
 import Bitcoin from './components/Bitcoin.vue';
@@ -44,7 +50,7 @@ touch src/components/About.vue
 
 [edit] src/components/About.vue
 <template>
-    <div id="app">
+    <div id="about">
         <h1>Things I like:</h1>
         <div class="thingsILike" v-for="thing of thingsIlike">{{ thing }}</div>
 
@@ -56,7 +62,7 @@ touch src/components/About.vue
 
 <script>
 export default {
-    name: 'app',
+    name: 'about',
 
     data() {
         return {
@@ -67,10 +73,51 @@ export default {
 };
 </script>
 
+<style scoped>
+#about {
+    border: 2px solid blue;
+    margin: 1rem;
+}
+</style>
+
 [edit] src/App.vue
 import About from './components/About.vue';
 
 components: { About },
 
+data() {
+    return {
+        msg: 'Welcome to Yours Vue.js App!',
+        foodCounter: 0,
+    };
+},
+
 <About />
+
+// Props example
+[edit] src/App.vue
+
+<About v-bind:thingsIlike="['🎸', '🏝', '🤖']" />
+<About :thingsIlike="['🌞', '🍔']" />
+
+[edit] src/components/About.vue
+
+props: ['thingsIlike'],
+
+data() {
+    return {
+        aThoughtAboutZebras: '',
+    };
+},
+
+// Prop validation
+
+[edit] src/components/About.vue
+
+props: {
+    thingsIlike: {
+        type: Array,
+        required: true,
+    },
+},
 ```
