@@ -1,20 +1,33 @@
 <template>
 	<div id="app">
 		<h1>{{ msg }}</h1>
-		<button>Click me 🍕</button>
+		<button v-on:click="giveMePizza">Click me 🍕</button>
+		<button v-on:click="giveMe('🥦')">🥦</button>
+
+		<div>{{ '🥑'.repeat(this.foodCounter) }}</div>
 	</div>
 </template>
 
 <script>
-// import './App.scss';
-
 export default {
 	name: 'app',
 
 	data() {
 		return {
-			msg: 'Welcome to Your Vue.js App!',
+			msg: 'Welcome to Yours Vue.js App!',
+			foodCounter: 0,
 		};
+	},
+
+	methods: {
+		giveMePizza() {
+			console.log('🍕🍕🍕');
+		},
+
+		giveMe(food) {
+			this.foodCounter += 1;
+			console.log(food.repeat(this.foodCounter));
+		},
 	},
 };
 </script>
