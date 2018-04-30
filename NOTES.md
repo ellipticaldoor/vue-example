@@ -1,26 +1,32 @@
-# Methods
+# Computed
 
 ```shell
 [edit] src/App.vue
-// Function example
-<button v-on:click="giveMePizza">Click me 🍕</button>
+// First add code using methods
 
-methods: {
-    giveMePizza() {
-        console.log('🍕🍕🍕');
-    },
+<button v-on:click="minedTimes += 1">Mine bitcoins ⛏</button>
+<div>My bitcoins: {{ bitcoins() }}</div>
+<div>{{ '💰'.repeat(bitcoins()) }}</div>
+
+// data
+minedTimes: 0,
+
+// methods
+bitcoins() {
+    console.log('You asked how bitcoin you have');
+    return this.minedTimes * 2;
 },
 
-// Methods in Inline Handlers
-<button v-on:click="giveMe('🥦')">🥦</button>
+// Computed example
+[edit] src/App.vue
 
-foodCounter: 0,
+<button v-on:click="minedTimes += 1">Mine bitcoins ⛏</button>
+<div>My bitcoins: {{ bitcoins }}</div>
+<div>{{ '💰'.repeat(bitcoins) }}</div>
 
-giveMe(food) {
-    this.foodCounter += 1;
-    console.log(food.repeat(this.foodCounter));
+// computed
+bitcoins() {
+    console.log('You asked how bitcoin you have');
+    return this.minedTimes * 2;
 },
-
-// Avocado reactiveness
-<div>{{ '🥑'.repeat(this.foodCounter) }}</div>
 ```

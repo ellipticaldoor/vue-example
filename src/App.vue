@@ -5,6 +5,10 @@
 		<button v-on:click="giveMe('🥦')">🥦</button>
 
 		<div>{{ '🥑'.repeat(this.foodCounter) }}</div>
+
+		<button v-on:click="minedTimes += 1">Mine bitcoins ⛏</button>
+		<div>My bitcoins: {{ bitcoins }}</div>
+		<div>{{ '💰'.repeat(bitcoins) }}</div>
 	</div>
 </template>
 
@@ -16,6 +20,7 @@ export default {
 		return {
 			msg: 'Welcome to Yours Vue.js App!',
 			foodCounter: 0,
+			minedTimes: 0,
 		};
 	},
 
@@ -27,6 +32,13 @@ export default {
 		giveMe(food) {
 			this.foodCounter += 1;
 			console.log(food.repeat(this.foodCounter));
+		},
+	},
+
+	computed: {
+		bitcoins() {
+			console.log('You asked how bitcoin you have');
+			return this.minedTimes * 2;
 		},
 	},
 };
