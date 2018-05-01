@@ -13,4 +13,4 @@ Branches:
 *   7-Vuex
 *   8-Router
 *   9-Lifecycle
-*   bonus-Lifecycle
+*   bonus-Watch
