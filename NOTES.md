@@ -3,8 +3,8 @@
 Schema: https://vuex.vuejs.org/en/images/vuex.png
 
 ```shell
-touch src/store
-[edit] touch src/store
+touch src/store.js
+[edit] src/store.js
 import Vue from 'vue';
 import Vuex from 'vuex';
 
