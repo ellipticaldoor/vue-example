@@ -1,7 +1,5 @@
 # Routes
 
-Schema: https://vuex.vuejs.org/en/images/vuex.png
-
 ```shell
 touch src/router.js
 [edit] src/router.js
