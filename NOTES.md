@@ -1,123 +1,67 @@
-# Components
+# Vuex
+
+Schema: https://vuex.vuejs.org/en/images/vuex.png
 
 ```shell
-mkdir components
-touch src/components/Bitcoin.vue
+touch src/store
+[edit] touch src/store
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-[edit] src/components/Bitcoin.vue
-<template>
-    <div id="bitcoin">
-        <button v-on:click="minedTimes += 1">Mine bitcoins ⛏</button>
-        <div>My bitcoins: {{ bitcoins }}</div>
-        <div>{{ '💰'.repeat(bitcoins) }}</div>
-    </div>
-</template>
+Vue.use(Vuex);
 
-<script>
-export default {
-    name: 'bitcoin',
+export default new Vuex.Store();
 
-    data() {
-        return {
-            minedTimes: 0,
-        };
+[edit] src/main.js
+import store from './store';
+
+new Vue({
+    el: '#app',
+    render: h => h(App),
+    store,
+});
+
+touch src/components/About.store.js
+[edit] src/components/About.store.js
+import Vue from 'vue';
+import store from '../store';
+
+store.registerModule('about', {
+    state: {
+        aThoughtAboutZebras: '',
     },
 
-    computed: {
-        bitcoins() {
-            console.log('You asked how bitcoin you have');
-            return this.minedTimes * 2;
+    mutations: {
+        SET_THOUGHT: (state, thought) => {
+            state.aThoughtAboutZebras = thought;
+            Vue.set(state, 'aThoughtAboutZebras', thought);
         },
     },
-};
-</script>
 
-<style scoped>
-#bitcoin {
-    border: 2px solid green;
-    margin: 1rem;
-}
-</style>
-
-[edit] src/App.vue
-import Bitcoin from './components/Bitcoin.vue';
-
-components: { Bitcoin },
-
-<Bitcoin />
-
-touch src/components/About.vue
-
-[edit] src/components/About.vue
-<template>
-    <div id="about">
-        <h1>Things I like:</h1>
-        <div class="thingsILike" v-for="thing of thingsIlike">{{ thing }}</div>
-
-        <h1>What do you think about zebras? 🦓</h1>
-        <input type="text" v-model="aThoughtAboutZebras">
-        <div><b>Your thought on zebras is:</b> {{ aThoughtAboutZebras }}</div>
-    </div>
-</template>
-
-<script>
-export default {
-    name: 'about',
-
-    data() {
-        return {
-            thingsIlike: ['🎸', '🏝', '🤖'],
-            aThoughtAboutZebras: '',
-        };
+    getters: {
+        aThoughtAboutZebras: ({ aThoughtAboutZebras }) => aThoughtAboutZebras,
     },
-};
-</script>
-
-<style scoped>
-#about {
-    border: 2px solid blue;
-    margin: 1rem;
-}
-</style>
-
-[edit] src/App.vue
-import About from './components/About.vue';
-
-components: { About },
-
-data() {
-    return {
-        msg: 'Welcome to Yours Vue.js App!',
-        foodCounter: 0,
-    };
-},
-
-<About />
-
-// Props example
-[edit] src/App.vue
-
-<About v-bind:thingsIlike="['🎸', '🏝', '🤖']" />
-<About :thingsIlike="['🌞', '🍔']" />
+});
 
 [edit] src/components/About.vue
 
-props: ['thingsIlike'],
+<input type="text" v-on:keyup.enter="setThought">
+<div><b>Your thought on zebras is:</b> {{ aThoughtAboutZebras }}</div>
 
-data() {
-    return {
-        aThoughtAboutZebras: '',
-    };
-},
+import './About.store';
 
-// Prop validation
-
-[edit] src/components/About.vue
-
-props: {
-    thingsIlike: {
-        type: Array,
-        required: true,
+methods: {
+    setThought() {
+        const thought = event.target.value;
+        this.$store.commit('SET_THOUGHT', thought);
     },
 },
+
+computed: {
+    aThoughtAboutZebras() {
+        return this.$store.getters.aThoughtAboutZebras;
+    },
+},
+
+// Show vue devtools
 ```

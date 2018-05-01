@@ -4,12 +4,14 @@
 		<div class="thingsILike" v-for="thing of thingsIlike">{{ thing }}</div>
 
 		<h1>What do you think about zebras? 🦓</h1>
-		<input type="text" v-model="aThoughtAboutZebras">
+		<input type="text" v-on:keyup.enter="setThought">
 		<div><b>Your thought on zebras is:</b> {{ aThoughtAboutZebras }}</div>
 	</div>
 </template>
 
 <script>
+import './About.store';
+
 export default {
 	name: 'about',
 
@@ -20,10 +22,17 @@ export default {
 		},
 	},
 
-	data() {
-		return {
-			aThoughtAboutZebras: '',
-		};
+	methods: {
+		setThought() {
+			const thought = event.target.value;
+			this.$store.commit('SET_THOUGHT', thought);
+		},
+	},
+
+	computed: {
+		aThoughtAboutZebras() {
+			return this.$store.getters.aThoughtAboutZebras;
+		},
 	},
 };
 </script>
