@@ -42,6 +42,12 @@ export default {
 			console.log(food.repeat(this.foodCounter));
 		},
 	},
+
+	watch: {
+		foodCounter() {
+			console.log('foodCounter increased');
+		},
+	},
 };
 </script>
 
