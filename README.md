@@ -1,4 +1,4 @@
-# Vuex examples
+# Vue examples
 
 Each example is explained in a different branch.
 
