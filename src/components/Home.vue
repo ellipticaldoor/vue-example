@@ -13,5 +13,13 @@ export default {
 			msg: 'Welcome to Yours Vue.js App!',
 		};
 	},
+
+	created() {
+		console.log('Home component created 🎊');
+	},
+
+	destroyed() {
+		console.log('Home component destroyed 💥');
+	},
 };
 </script>
