@@ -4,9 +4,13 @@
 		<button v-on:click="giveMePizza">Click me 🍕</button>
 		<button v-on:click="giveMe('🥦')">🥦</button>
 
+		<router-link to="/">Home</router-link>
+		<router-link to="/bitcoin">Bitcoin</router-link>
+
+		<router-view />
+
 		<div>{{ '🥑'.repeat(this.foodCounter) }}</div>
 
-		<Bitcoin />
 		<About v-bind:thingsIlike="['🎸', '🏝', '🤖']" />
 		<About :thingsIlike="['🌞', '🍔']" />
 	</div>
