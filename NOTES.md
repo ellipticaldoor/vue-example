@@ -64,4 +64,26 @@ computed: {
 },
 
 // Show vue devtools
+
+// Async using actions
+[edit] src/components/About.store.js
+actions: {
+    getRandonThought: ({ commit }, search) => {
+        fetch(`https://www.reddit.com/subreddits/search.json?q=${search}`)
+            .then(response => response.json())
+            .then(json => {
+                const thought = json.data.children[0].data.title;
+                commit('SET_THOUGHT', thought);
+            });
+    },
+},
+
+[edit] src/components/About.vue
+<input type="text" v-on:keyup.enter="searchThought" placeholder="async search">
+
+// Methods
+searchThought() {
+    const search = event.target.value;
+    this.$store.dispatch('getRandonThought', search);
+},
 ```
